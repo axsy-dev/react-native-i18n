@@ -15,25 +15,53 @@ const rnwPath = fs.realpathSync(
   path.resolve(require.resolve('react-native-windows/package.json'), '..'),
 );
 
+const root = path.resolve(__dirname, '..');
+
+const pak = JSON.parse(
+  fs.readFileSync(path.join(root, 'package.json'), 'utf8')
+);
+
+const modules = [
+  '@babel/runtime',
+  ...Object.keys({
+    ...pak.dependencies,
+    ...pak.peerDependencies,
+  }),
+];
+
 module.exports = {
+  projectRoot: __dirname,
+  watchFolders: [root],
   resolver: {
-    extraNodeModules: {
+
+    extraNodeModules:  modules.reduce((acc, name) => {
+      if (!acc[name]) {
+        acc[name] = path.join(__dirname, 'node_modules', name);
+      }
+      return acc;
+    },  {
       // Redirect react-native to react-native-windows
       'react-native': rnwPath,
-      'react-native-windows': rnwPath,
-    },
+      'react-native-windows': rnwPath
+    }),
     // Include the macos platform in addition to the defaults because the fork includes macos, but doesn't declare it
     platforms: ['ios', 'android', 'windesktop', 'windows', 'web', 'macos'],
+    providesModuleNodeModules: ['react-native-windows'],
     // Since there are multiple copies of react-native, we need to ensure that metro only sees one of them
     // This should go in RN 0.61 when haste is removed
     blacklistRE: blacklist([
       new RegExp(
-        `${(path.resolve(rnPath) + path.sep).replace(/[/\\]/g, '/')}.*`,
+        `${(path.resolve(rnPath) + path.sep).replace(/[/\\\\]/g, '[/\\\\]')}.*`,
+      ),
+      new RegExp(
+        `${(path.resolve(root) + path.sep + 'node_modules').replace(/[/\\\\]/g, '[/\\\\]')}.*`,
       ),
 
       // This stops "react-native run-windows" from causing the metro server to crash if its already running
       new RegExp(
-        `${path.resolve(__dirname, 'windows').replace(/[/\\]/g, '/')}.*`,
+        `${path
+          .resolve(__dirname, 'windows')
+          .replace(/[/\\\\]/g, '[/\\\\]')}.*`,
       ),
     ]),
   },

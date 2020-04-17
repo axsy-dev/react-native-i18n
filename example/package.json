@@ -23,11 +23,17 @@
     "rnpm-plugin-windows": "^0.6.1"
   },
   "dependencies": {
-    "react-native-i18n": "file:../",
     "yarn": "^1.22.4",
     "react-native": "0.61.5"
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "files": [
+    "index.js",
+    "RNI18n.podspec",
+    "android",
+    "ios",
+    "windows"
+  ]
 }
