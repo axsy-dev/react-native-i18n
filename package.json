@@ -13,7 +13,22 @@
     "url": "ssh://git@github.com/axsy-dev/react-app.git",
     "code-url": "ssh://git@github.com/axsy-dev/react-native-i18n"
   },
-  "keywords": ["react-native", "react-component", "ios", "i18n"],
+  "keywords": [
+    "react-native",
+    "react-component",
+    "ios",
+    "i18n"
+  ],
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-windows": "*"
+  },
+  "devDependencies": {
+    "react": "^16.9.0",
+    "react-native": "^0.61.5",
+    "react-native-windows": "0.61.4"
+  },
   "dependencies": {
     "i18n-js": "^3.0.3"
   }
