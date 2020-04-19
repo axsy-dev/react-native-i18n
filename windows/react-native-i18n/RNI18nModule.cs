@@ -6,11 +6,11 @@ using System.Collections.Generic;
 namespace react_native_i18n
 {
   [ReactModule("RNI18n")]
-  public sealed class RNI18nModule
+  class RNI18nModule
   {
 
     [ReactConstant]
-    JSValue languages
+    public JSValue languages
     {
       get
       {
@@ -25,7 +25,7 @@ namespace react_native_i18n
     }
 
     [ReactMethod("getLanguages")]
-    void GetLanguages(IReactPromise<JSValueArray> promise)
+    public void GetLanguages(IReactPromise<JSValue> promise)
     {
 
       var jarr = new JSValueArray();
@@ -34,7 +34,7 @@ namespace react_native_i18n
       {
         jarr.Add(userLanguage);
       }
-      promise.Resolve(jarr);
+      promise.Resolve(new JSValue(jarr));
     }
 
   }

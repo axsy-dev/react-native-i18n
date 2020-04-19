@@ -1,8 +1,8 @@
 // @ flow
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, ScrollView, View } from 'react-native';
-import I18n, { getLanguages } from 'react-native-i18n';
+import { StyleSheet, Text, ScrollView, View } from 'react-native';
+import I18n, { getLanguages } from '@axsy-dev/react-native-i18n';
 
 // Enable fallbacks if you want `en-US`
 // and `en-GB` to fallback to `en`
@@ -51,10 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
     padding: 24,
-    ...Platform.select({
-      ios: { paddingTop: 44 },
-      default: { paddingTop: 24 },
-    }),
+    paddingTop: 44,
   },
   title: {
     fontSize: 20,

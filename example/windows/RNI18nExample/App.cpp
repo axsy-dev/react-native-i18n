@@ -35,7 +35,7 @@ App::App() noexcept
 #endif
     
     PackageProviders().Append(make<ReactPackageProvider>()); // Includes all modules in this project
-    PackageProviders().Append(react_native_i18n::ReactPackageProvider());
+    PackageProviders().Append(winrt::react_native_i18n::ReactPackageProvider());
 
     REACT_REGISTER_NATIVE_MODULE_PACKAGES(); //code-gen macro from autolink
 

@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/axsy-dev/react-app.git",
+    "url": "ssh://git@github.com/axsy-dev/react-native-i18n.git",
     "code-url": "ssh://git@github.com/axsy-dev/react-native-i18n"
   },
   "keywords": [
@@ -31,5 +31,12 @@
   },
   "dependencies": {
     "i18n-js": "^3.0.3"
-  }
+  },
+  "files": [
+    "index.js",
+    "RNI18n.podspec",
+    "android",
+    "ios",
+    "windows"
+  ]
 }
