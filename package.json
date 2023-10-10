@@ -42,6 +42,6 @@
     "windows"
   ],
   "scripts": {
-    "windows": "react-native run-windows"
+    "windows": "install-windows-test-app --project-directory example/windows && react-native run-windows --root example --arch x64s"
   }
 }
