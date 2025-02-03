@@ -1,16 +1,55 @@
 {
-  "name": "react-native-i18n",
+  "name": "@axsy-dev/react-native-i18n",
   "version": "2.0.11",
   "description": "Provide I18n to your React Native application",
   "license": "MIT",
   "author": "Alexander Zaytsev",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
-    "url": "github.com/AlexanderZaytsev/react-native-i18n.git"
+    "url": "ssh://git@github.com/axsy-dev/react-native-i18n.git",
+    "code-url": "ssh://git@github.com/axsy-dev/react-native-i18n"
   },
-  "keywords": ["react-native", "react-component", "ios", "i18n"],
+  "keywords": [
+    "react-native",
+    "react-component",
+    "ios",
+    "i18n"
+  ],
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-windows": "*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/metro-config": "^0.72.11",
+    "react": "^18.2.0",
+    "react-native": "^0.73.11",
+    "react-native-test-app": "^2.5.28",
+    "react-native-windows": "^0.73.22",
+    "metro-react-native-babel-preset": "0.76.8"
+  },
   "dependencies": {
     "i18n-js": "^3.0.3"
+  },
+  "files": [
+    "index.js",
+    "RNI18n.podspec",
+    "android",
+    "ios",
+    "windows"
+  ],
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "cd example && react-native start",
+    "windows": "install-windows-test-app --project-directory example/windows && react-native run-windows --root example --arch x64"
   }
 }
